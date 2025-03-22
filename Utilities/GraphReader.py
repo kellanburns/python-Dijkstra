@@ -13,13 +13,15 @@ def graphReader(fileName: str) -> list[LinkedList]:
     with open(fileName, 'r') as reader:
         for line in reader:
             parts = line.strip().split(":")
-            vertex = parts[0].trim()
+            vertex = parts[0].strip()
             if ((len(parts) > 1) and (parts[1].strip())):
                 neighbors = parts[1].strip().split(";")
                 for neighbor in neighbors:
-                    edge_parts = neighbor.strip.split(";")
+                    edge_parts = neighbor.strip().split(";")
                     destination = edge_parts[0].strip()
                     weight = edge_parts[1].strip()
                     graph[vertex].add(destination, weight)
+
+
 
     return graph

@@ -2,6 +2,10 @@
 
 import sys
 
+from Utilities.Dijkstra import dijkstra
+from Utilities.GraphReader import graphReader
+
+
 def main():
     print("Test line")
 
@@ -10,7 +14,7 @@ def main():
 
     inputFileName = sys.argv[1]
     source = sys.argv[2]
-    graph = fileReader(inputFileName)
+    graph = graphReader(inputFileName)
     dijkstra(graph, source)
 
 if __name__ == "__main__":
