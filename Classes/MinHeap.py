@@ -15,7 +15,7 @@ class MinHeap(object):
 
     def bubbleUp(self, index: int):
         while index > 0:
-            parent = (index - 1) / 2
+            parent = int((index - 1) / 2)
             if (self.key[self.heap[index]] < self.key[parent]):
                 self.swap(index, parent)
             else:

@@ -7,15 +7,23 @@ class LinkedList(object):
             self.weight = weight
 
         def get_destination(self) -> int:
+            # print("Function: LinkedList.Edge.get_destination()")
+
             return self.destination
 
         def get_weight(self) -> int:
+            # print("Function: LinkedList.Edge.get_weight()")
+
             return self.weight
 
         def set_destination(self, destination: int) -> None:
+            # print("Function: LinkedList.Edge.set_destination()")
+
             self.destination = destination
 
         def set_weight(self, weight: int) -> None:
+            # print("Function: LinkedList.Edge.set_weight()")
+
             self.weight = weight
 
     class __Node:
@@ -25,6 +33,8 @@ class LinkedList(object):
             self.next = None
 
         def get_edge(self) -> int:
+            # print("Function: LinkedList.Node.get_edge()")
+
             return self.edge
 
         def get_next(self) -> "LinkedList.__Node":
