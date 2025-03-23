@@ -17,22 +17,17 @@ def printResults(distances: [int], parents: [int], source: int) -> None:
             path = reconstructPath(parents, i)
             print(f"[{i}] shortest path: {path} shortest distance: {distances[i]}")
 
-def dijkstra(graph: [LinkedList], source: int) -> None:
-    n = graph.length
-    distances = [int]
-    parents = [int]
-    visited = [bool]
+def dijkstra(graph: [], source: int) -> None:
+    n = len(graph)
+    distances = [float('inf')] * n
+    parents = [-1] * n
+    visited = [False] * n
     heap = MinHeap(n)
-
-    for i in range(n):
-        distances[i] = float('inf')
-        parents[i] = -1
-        heap.insert(i, distances[i])
 
     distances[source] = 0
     heap.decreaseKey(source, 0)
 
-    while heap:
+    while not (heap.isEmpty()):
         u = heap.extractMin()
         if (visited[u]):
             continue
@@ -41,10 +36,10 @@ def dijkstra(graph: [LinkedList], source: int) -> None:
         current = graph[u].head
         while (current):
             edge = current.edge
-            v = edge.destination
-            weight = edge.weight
+            v = int(edge.destination)
+            weight = int(edge.weight)
 
-            if(not visited[v] and distances[u] + weight < distances[v]):
+            if((not visited[v]) and (distances[u] + weight < distances[v])):
                 distances[v] = distances[u] + weight
                 parents[v] = u
                 heap.decreaseKey(v, distances[v])

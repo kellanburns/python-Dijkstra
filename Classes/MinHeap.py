@@ -22,7 +22,6 @@ class MinHeap(object):
                 break
 
     def bubbleDown(self, index: int) -> None:
-        left, right, smallest = -1
         while (index < self.size):
             left = 2 * index + 1
             right = 2 * index + 2
@@ -46,12 +45,19 @@ class MinHeap(object):
         self.bubbleUp(self.size - 1)
 
     def extractMin(self) -> int:
+        if (self.size == 0):
+            raise IndexError("Error: MinHeap extractMin: size is zero")
+
         minVertex = self.heap[0]
-        self.heap[0] = self.heap[self.size - 1]
-        self.position[minVertex] = -1
+
+        lastVertex = self.heap[self.size - 1]
+        self.heap[0] = lastVertex
+        self.position[minVertex] = -1 # Removed
         self.position[self.heap[0]] = 0
+
         self.size = self.size - 1
         self.bubbleDown(0)
+
         return minVertex
 
     def decreaseKey(self, vertex: int, newKey: int) -> None:

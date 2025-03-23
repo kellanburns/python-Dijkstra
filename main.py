@@ -13,7 +13,7 @@ def main():
         raise ValueError("Usage: python main.py <input_file> <source_vertex>")
 
     inputFileName = sys.argv[1]
-    source = sys.argv[2]
+    source = int(sys.argv[2])
     graph = graphReader(inputFileName)
     dijkstra(graph, source)
 

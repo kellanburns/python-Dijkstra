@@ -48,7 +48,7 @@ class LinkedList(object):
 
     # LinkedList add() method
     def add(self, destination: int, weight: int) -> None:
-        newNode = self.LinkedList.__Node(LinkedList.__Edge(destination, weight))
+        newNode = LinkedList.__Node(LinkedList.__Edge(destination, weight))
 
         if self.head is None:
             self.head = newNode
