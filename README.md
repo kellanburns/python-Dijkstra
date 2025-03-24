@@ -10,3 +10,5 @@ python-Dijkstra:
 | `Utilities/`    | `Dijkstra.py`    | Dijkstra's algorithm implementation with output functions.             |
 |                | `GraphReader.py` | File input functions.                                                   |
 | *(root)*        | `main.py`        | Program entry point (CLI runner).                                      |
+
+Usage: python main.py <input_file> <source_vertex>
