@@ -1,31 +1,27 @@
 # Kellan Burns, python-Dijkstra project
-from Classes.LinkedList import LinkedList
+
 from Classes.MinHeap import MinHeap
 
 def reconstructPath(parents: [int], target: int) -> str:
-    # print("Function: Dijkstra.reconstructPath()")
-
     path = []
 
     while target != -1:
         path.insert(0, str(target))
         target = parents[target]
 
-    return ",".join(path)
+    return " -> ".join(path)
 
 def printResults(distances: [int], parents: [int], source: int) -> None:
-    # print("Function: Dijkstra.printResults()")
+    print(f"Shortest path from:")
 
     for i in range(len(distances)):
         if (distances[i] == float('inf')):
-            print(f"[{i}] unreachable")
+            print(f"\tNode {source} to node {i}:".ljust(20), f"Node {i} unreachable from source")
         else:
             path = reconstructPath(parents, i)
-            print(f"[{i}] shortest path: ({path}) shortest distance: {distances[i]}")
+            print(f"\tNode {source} to node {i}:".ljust(20), f"({path})".ljust(20), f"distance: {distances[i]}")
 
 def dijkstra(graph: [], source: int) -> None:
-    # print("Function: Dijkstra.dijkstra()")
-
     n = len(graph)
     distances = [float('inf')] * n
     parents = [-1] * n
@@ -42,11 +38,11 @@ def dijkstra(graph: [], source: int) -> None:
             continue
         visited[u] = True
 
-        current = graph[u].head
+        current = graph[u].get_head()
         while (current):
-            edge = current.edge
-            v = int(edge.destination)
-            weight = int(edge.weight)
+            edge = current.get_edge()
+            v = int(edge.get_destination())
+            weight = int(edge.get_weight())
 
             if(not visited[v] and distances[u] + weight < distances[v]):
                 distances[v] = distances[u] + weight
@@ -56,6 +52,6 @@ def dijkstra(graph: [], source: int) -> None:
                 else:
                     heap.decreaseKey(v, distances[v])
 
-            current = current.next
+            current = current.get_next()
 
     printResults(distances, parents, source)

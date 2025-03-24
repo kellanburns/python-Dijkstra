@@ -16,6 +16,7 @@ class MinHeap(object):
     def bubbleUp(self, index: int):
         while index > 0:
             parent = int((index - 1) / 2)
+
             if (self.key[self.heap[index]] < self.key[parent]):
                 self.swap(index, parent)
             else:
@@ -42,7 +43,7 @@ class MinHeap(object):
         self.heap[self.size] = vertex
         self.key[vertex] = k
         self.size = self.size + 1
-        self.bubbleUp(self.size - 1)
+        self.bubbleUp(self.size - 1)    # Fix the heap structure
 
     def extractMin(self) -> int:
         if (self.size == 0):
@@ -52,7 +53,7 @@ class MinHeap(object):
 
         lastVertex = self.heap[self.size - 1]
         self.heap[0] = lastVertex
-        self.position[minVertex] = -1 # Removed
+        self.position[minVertex] = -1   # Removed from interaction
         self.position[self.heap[0]] = 0
 
         self.size = self.size - 1

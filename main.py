@@ -1,14 +1,11 @@
 # Kellan Burns, python-Dijkstra project
 
 import sys
-
 from Utilities.Dijkstra import dijkstra
 from Utilities.GraphReader import graphReader
 
 
 def main():
-    # print("Function: Main")
-
     if (len(sys.argv) != 3):
         raise ValueError("Usage: python main.py <input_file> <source_vertex>")
 

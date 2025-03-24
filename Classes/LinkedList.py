@@ -1,69 +1,55 @@
 
 class LinkedList(object):
     class __Edge:
-        # Edge Constructor
         def __init__(self, destination: int, weight: int):
-            self.destination = destination
-            self.weight = weight
+            self.__destination = destination
+            self.__weight = weight
 
         def get_destination(self) -> int:
-            # print("Function: LinkedList.Edge.get_destination()")
-
-            return self.destination
+            return self.__destination
 
         def get_weight(self) -> int:
-            # print("Function: LinkedList.Edge.get_weight()")
-
-            return self.weight
+            return self.__weight
 
         def set_destination(self, destination: int) -> None:
-            # print("Function: LinkedList.Edge.set_destination()")
-
-            self.destination = destination
+            self.__destination = destination
 
         def set_weight(self, weight: int) -> None:
-            # print("Function: LinkedList.Edge.set_weight()")
-
-            self.weight = weight
+            self.__weight = weight
 
     class __Node:
-        # Node Constructor
         def __init__(self, edge: int):
-            self.edge = edge
-            self.next = None
+            self.__edge = edge
+            self.__next = None
 
         def get_edge(self) -> int:
-            # print("Function: LinkedList.Node.get_edge()")
-
-            return self.edge
+            return self.__edge
 
         def get_next(self) -> "LinkedList.__Node":
-            return self.next
+            return self.__next
 
         def set_edge(self, edge: int) -> None:
-            self.edge = edge
+            self.__edge = edge
 
         def set_next(self, next: "LinkedList.__Node") -> None:
-            self.next = next
+            self.__next = next
 
-    # LinkedList Constructor
     def __init__(self, head=None):
-        self.head = head
+        self.__head = head
 
     def get_head(self) -> "LinkedList.__Node":
-        return self.head
+        return self.__head
 
     def set_head(self, head: "LinkedList") -> None:
-        self.head = head
+        self.__head = head
 
-    # LinkedList add() method
     def add(self, destination: int, weight: int) -> None:
         newNode = LinkedList.__Node(LinkedList.__Edge(destination, weight))
 
-        if self.head is None:
-            self.head = newNode
+        if self.__head is None:
+            self.__head = newNode
         else:
-            temp =  self.head
-            while temp.next is not None:
-                temp = temp.next
-            temp.next = newNode
+            temp = self.__head
+            while temp.get_next() is not None:
+                temp = temp.get_next()
+            temp.set_next(newNode)
